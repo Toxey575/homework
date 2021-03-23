@@ -8,7 +8,7 @@ public class Homework2 {
             // Задача на if
             System.out.println("Задача 1");
             int count = 3;
-            System.out.println("Число правильныйх ответов: " + count);
+            System.out.println("Число правильных ответов: " + count);
 
             if (count >= 90) {
                 System.out.println("Отлично");
@@ -26,7 +26,7 @@ public class Homework2 {
             int first, second, op;
             System.out.println("Введите первый операнд");
             first = scanner.nextInt();
-            System.out.println("Введите первый операнд");
+            System.out.println("Введите второй операнд");
             second = scanner.nextInt();
             System.out.println("Введите 3 это +, 5 это -, 7 это *, 9 это /: ");
             op = scanner.nextInt();
