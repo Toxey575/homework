@@ -1,12 +1,7 @@
 package com.roma.lib.catmouse;
 
-import com.roma.lib.library.utils.Random;
-
-import java.lang.reflect.Array;
-import java.util.Arrays;
-
 import static com.roma.lib.catmouse.Settings.*;
-import static com.roma.lib.library.utils.Random.*;
+import static com.roma.lib.catmouse.utils.Random.*;
 
 
 

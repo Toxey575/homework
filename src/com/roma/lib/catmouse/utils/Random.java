@@ -1,4 +1,4 @@
-package com.roma.lib.library.utils;
+package com.roma.lib.catmouse.utils;
 
 public class Random {
 

@@ -1,6 +1,6 @@
 package com.roma.lib.catmouse;
 
-import static com.roma.lib.library.utils.Random.*;
+import static com.roma.lib.catmouse.utils.Random.*;
 
 public class Mouse {
     // Мышь: скорость.

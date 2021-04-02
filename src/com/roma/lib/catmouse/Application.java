@@ -1,10 +1,5 @@
 package com.roma.lib.catmouse;
 
-import java.util.Arrays;
-import java.util.Random;
-
-import static com.roma.lib.library.utils.Random.*;
-
 public class Application {
     public static void main(String[] args) {
 
