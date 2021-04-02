@@ -1,4 +1,4 @@
-package com.roma.lib;
+package com.roma.lib.library;
 
 public class Author {
     private String name;

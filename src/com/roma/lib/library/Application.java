@@ -1,6 +1,4 @@
-package com.roma.lib;
-
-import java.util.HashMap;
+package com.roma.lib.library;
 
 public class Application {
     public static void main(String[] args) {
