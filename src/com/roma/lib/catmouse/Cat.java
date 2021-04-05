@@ -40,8 +40,8 @@ public class Cat {
     public void hijack (Cat cat) {
         if (this.weight > cat.weight) {
             for (int i = 0, j = 0; i < this.catches.length; i++) {
-                //int currentMouse = cat.catches[2].getSpeed();
-                if (this.catches[i] == null /*&& this.speed > currentMouse*/) {
+//                 int currentMouse = cat.catches[j].getSpeed();
+                if (this.catches[i] == null && cat.catches[j] != null && this.speed > cat.catches[j].getSpeed()) {
                     this.catches[i] = cat.catches[j];
                     j++;
                 }
@@ -53,8 +53,8 @@ public class Cat {
         } else if (this.weight == cat.weight) System.out.println("Коты равны и решили дружить");
         else {
             for (int i = 0, j = 0; i < cat.catches.length; i++) {
-                //int currentMouse = this.catches[2].getSpeed();;
-                if (cat.catches[i] == null /*&& cat.speed > currentMouse*/) {
+                int currentMouse = this.catches[j].getSpeed();
+                if (cat.catches[i] == null && cat.speed > currentMouse) {
                     cat.catches[i] = this.catches[j];
                     j++;
                 }
