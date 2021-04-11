@@ -5,7 +5,7 @@ public class Application {
 
         School school = new School();
 
-        school.getPrincipal().startDay(school.getTeachers(), school.getApprentices());
+        school.getPrincipal().startDay(school);
 
         System.out.println(school);
 

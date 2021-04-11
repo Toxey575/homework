@@ -13,7 +13,7 @@ public class Principal {
     }
 
 
-    public void startDay(Teacher[] teachers, Apprentice[] apprentices) {
+    public void startDay(School school /*Teacher[] teachers, Apprentice[] apprentices*/) {
         Scanner scanner = new Scanner(System.in);
         String condition = "продолжить";
         while (condition.equals("продолжить")) {
@@ -21,8 +21,8 @@ public class Principal {
             condition = scanner.next();
             switch (condition){
                 case "продолжить" :
-                    for (int i = 0; i < teachers.length; i++) {
-                        teachers[i].startLesson(apprentices);
+                    for (int i = 0; i < school.getTeachers().length; i++) {
+                        school.getTeachers()[i].startLesson(school.getApprentices());
                     }
                 case "закончить" : break;
             }

@@ -16,7 +16,7 @@ public class Teacher /*implements CanTeach*/ {
     public void startLesson(Apprentice[] apprentices) {
         for (int i = 0; i < apprentices.length; i++) {
             if (this.subject.equals(apprentices[i].getSubject()) || apprentices[i] != null) {
-                System.out.println(this.name + " пытается научить " + apprentices[i].getName());
+                System.out.println("Учитель " + this.subject + " " + this.name + " пытается научить " + apprentices[i].getName());
                 apprentices[i].tryToLearn();
             }
         }
