@@ -60,13 +60,17 @@ public class Application {
 
         System.out.println(cat1);
         System.out.println(cat2);
+        System.out.println(mouse1.getSpeed());
 
         cat1.hijack(cat2);
 
         System.out.println(cat1);
         System.out.println(cat2);
 
-        System.out.println(mouse1.getSpeed());
+
+
+
+
 
 
 
