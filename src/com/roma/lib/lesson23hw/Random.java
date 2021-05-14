@@ -23,6 +23,10 @@ public class Random {
         return (10 + (int) (Math.random() * 40));
     }
 
+    public static int ageGen() {
+        return (20 + (int) (Math.random() * 40));
+    }
+
     public static LocalDate dateOfBirthGen() {
         String strDate = null;
 
@@ -41,6 +45,11 @@ public class Random {
 
     public static int sizeGen() {
         return (1 + (int) (Math.random() * 9));
+    }
+
+    public static String humNameGen() {
+        String[] authorsN = {"Игорь", "Наталья", "Федор", "Александр", "Анатолий", "Татьяна", "Олег", "Дарья", "Николай", "Роман",};
+        return authorsN[(int) (Math.random() * 10)];
     }
 
 

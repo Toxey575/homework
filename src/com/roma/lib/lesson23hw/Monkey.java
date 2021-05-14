@@ -6,6 +6,7 @@ public class Monkey extends Mammal {
     private final String color = colorGen();
     private Banana[] bananas = new Banana[10];
     private String[] nums = {"1", "1", "1", "1", "1", "1",};
+    private Trainer trainer = new Trainer();
 
     public Banana[] getBananas() {
         return bananas;
