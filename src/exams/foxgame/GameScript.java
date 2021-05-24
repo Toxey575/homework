@@ -1,7 +1,13 @@
 package exams.foxgame;
 
+import exams.foxgame.menu.Menu;
 import exams.foxgame.utils.Status;
+import exams.foxgame.menu.*;
 
+import java.io.ByteArrayOutputStream;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Scanner;
@@ -11,7 +17,7 @@ import static exams.foxgame.utils.Status.*;
 
 public class GameScript {
     private static int currentStage;
-    private static Status status = INPROGRESS;
+    public static Status status;
     private static final Scanner scanner = new Scanner(System.in);
     public static final ArrayList<HashMap<Integer, String>> gameText = new ArrayList<>();
     private static final String[] choice = {"1. Вернуться домой\n" +
@@ -78,180 +84,233 @@ public class GameScript {
     public static void startGame(int currentStage) {
         int playerInput;
 
-        System.out.println("""
+        while (status.equals(INPROGRESS)) {
+            switch (currentStage) {
+                case 0:
+                    System.out.println("""
                 Каждое утро Лисёнок просыпался, завтракал и шёл увидеться с Бельчонком.
                 Это утро не было исключением. Лисёнок пришёл на их обычное место встречи, но Бельчонка там не было.
                 Лисёнок ждал, ждал, но так и не смог дождаться своего друга. "Бельчонок не пропустил еще ни одной встречи,
                 вдруг он попал в беду." - подумал Лисёнок. Как поступить Лисенку?
                 """);
-        while (status.equals(INPROGRESS))
 
-        switch (currentStage) {
-            case 0:
-                System.out.println(choice[currentStage]);
-                System.out.println("Введите 1 или 2.");
-
-                playerInput = scanner.nextInt();
-
-                if (playerInput == 1) {
-                    System.out.println(gameText.get(currentStage).get(1));
-                    status = WIN;
-                    break;
-                } else if (playerInput == 2) {
-                    System.out.println(gameText.get(currentStage).get(2));
-                    currentStage = 1;
-                    break;
-                } else {
                     System.out.println(choice[currentStage]);
                     System.out.println("Введите 1 или 2.");
-                }
-            case 1:
-                System.out.println(choice[currentStage]);
-                System.out.println("Введите 1 или 2.");
+                    System.out.println("Введите 3, чтобы выйти в меню.");
 
-                playerInput = scanner.nextInt();
+                    playerInput = scanner.nextInt();
 
-                if (playerInput == 1) {
-                    System.out.println(gameText.get(currentStage).get(1));
-                    currentStage = 2;
-                    break;
-                } else if (playerInput == 2) {
-                    System.out.println(gameText.get(currentStage).get(2));
-                    status = LOSE;
-                    break;
-                } else {
+                    if (playerInput == 1) {
+                        System.out.println(gameText.get(currentStage).get(1));
+                        status = WIN;
+                        break;
+                    } else if (playerInput == 2) {
+                        System.out.println(gameText.get(currentStage).get(2));
+                        currentStage = 1;
+                        break;
+                    } else if (playerInput == 3) {
+                        GameScript.currentStage = currentStage;
+                        Menu.pauseMenu();
+                    } else {
+                        System.out.println(choice[currentStage]);
+                        System.out.println("Введите 1 или 2.");
+                        System.out.println("Введите 3, чтобы выйти в меню.");
+                    }
+                case 1:
                     System.out.println(choice[currentStage]);
                     System.out.println("Введите 1 или 2.");
-                }
-            case 2:
-                System.out.println(choice[currentStage]);
-                System.out.println("Введите 1 или 2.");
+                    System.out.println("Введите 3, чтобы выйти в меню.");
 
-                playerInput = scanner.nextInt();
+                    playerInput = scanner.nextInt();
 
-                if (playerInput == 1) {
-                    System.out.println(gameText.get(currentStage).get(1));
-                    currentStage = 3;
-                    break;
-                } else if (playerInput == 2) {
-                    System.out.println(gameText.get(currentStage).get(2));
-                    currentStage = 4;
-                    break;
-                } else {
+                    if (playerInput == 1) {
+                        System.out.println(gameText.get(currentStage).get(1));
+                        currentStage = 2;
+                        break;
+                    } else if (playerInput == 2) {
+                        System.out.println(gameText.get(currentStage).get(2));
+                        status = LOSE;
+                        break;
+                    } else if (playerInput == 3) {
+                        GameScript.currentStage = currentStage;
+                        Menu.pauseMenu();
+                    } else {
+                        System.out.println(choice[currentStage]);
+                        System.out.println("Введите 1 или 2.");
+                        System.out.println("Введите 3, чтобы выйти в меню.");
+                    }
+                case 2:
                     System.out.println(choice[currentStage]);
                     System.out.println("Введите 1 или 2.");
-                }
-            case 3:
-                System.out.println(choice[currentStage]);
-                System.out.println("Введите 1 или 2.");
+                    System.out.println("Введите 3, чтобы выйти в меню.");
 
-                playerInput = scanner.nextInt();
+                    playerInput = scanner.nextInt();
 
-                if (playerInput == 1) {
-                    System.out.println(gameText.get(currentStage).get(1));
-                    currentStage = 5;
-                    break;
-                } else if (playerInput == 2) {
-                    System.out.println(gameText.get(currentStage).get(2));
-                    status = LOSE;
-                    break;
-                } else {
+                    if (playerInput == 1) {
+                        System.out.println(gameText.get(currentStage).get(1));
+                        currentStage = 3;
+                        break;
+                    } else if (playerInput == 2) {
+                        System.out.println(gameText.get(currentStage).get(2));
+                        currentStage = 4;
+                        break;
+                    } else if (playerInput == 3) {
+                        GameScript.currentStage = currentStage;
+                        Menu.pauseMenu();
+                    } else {
+                        System.out.println(choice[currentStage]);
+                        System.out.println("Введите 1 или 2.");
+                        System.out.println("Введите 3, чтобы выйти в меню.");
+                    }
+                case 3:
                     System.out.println(choice[currentStage]);
                     System.out.println("Введите 1 или 2.");
-                }
-            case 4:
-                System.out.println(choice[currentStage]);
-                System.out.println("Введите 1 или 2.");
+                    System.out.println("Введите 3, чтобы выйти в меню.");
 
-                playerInput = scanner.nextInt();
+                    playerInput = scanner.nextInt();
 
-                if (playerInput == 1) {
-                    System.out.println(gameText.get(currentStage).get(1));
-                    status = WIN;
-                    break;
-                } else if (playerInput == 2) {
-                    System.out.println(gameText.get(currentStage).get(2));
-                    status = LOSE;
-                    break;
-                } else {
+                    if (playerInput == 1) {
+                        System.out.println(gameText.get(currentStage).get(1));
+                        currentStage = 5;
+                        break;
+                    } else if (playerInput == 2) {
+                        System.out.println(gameText.get(currentStage).get(2));
+                        status = LOSE;
+                        break;
+                    } else if (playerInput == 3) {
+                        GameScript.currentStage = currentStage;
+                        Menu.pauseMenu();
+                    } else {
+                        System.out.println(choice[currentStage]);
+                        System.out.println("Введите 1 или 2.");
+                        System.out.println("Введите 3, чтобы выйти в меню.");
+                    }
+                case 4:
                     System.out.println(choice[currentStage]);
                     System.out.println("Введите 1 или 2.");
-                }
-            case 5:
-                System.out.println(choice[currentStage]);
-                System.out.println("Введите 1 или 2.");
+                    System.out.println("Введите 3, чтобы выйти в меню.");
 
-                playerInput = scanner.nextInt();
+                    playerInput = scanner.nextInt();
 
-                if (playerInput == 1) {
-                    System.out.println(gameText.get(currentStage).get(1));
-                    status = LOSE;
-                    break;
-                } else if (playerInput == 2) {
-                    System.out.println(gameText.get(currentStage).get(2));
-                    currentStage = 6;
-                    break;
-                } else {
+                    if (playerInput == 1) {
+                        System.out.println(gameText.get(currentStage).get(1));
+                        status = WIN;
+                        break;
+                    } else if (playerInput == 2) {
+                        System.out.println(gameText.get(currentStage).get(2));
+                        status = LOSE;
+                        break;
+                    } else if (playerInput == 3) {
+                        GameScript.currentStage = currentStage;
+                        Menu.pauseMenu();
+                    } else {
+                        System.out.println(choice[currentStage]);
+                        System.out.println("Введите 1 или 2.");
+                        System.out.println("Введите 3, чтобы выйти в меню.");
+                    }
+                case 5:
                     System.out.println(choice[currentStage]);
                     System.out.println("Введите 1 или 2.");
-                }
-            case 6:
-                System.out.println(choice[currentStage]);
-                System.out.println("Введите 1 или 2.");
+                    System.out.println("Введите 3, чтобы выйти в меню.");
 
-                playerInput = scanner.nextInt();
+                    playerInput = scanner.nextInt();
 
-                if (playerInput == 1) {
-                    System.out.println(gameText.get(currentStage).get(1));
-                    currentStage = 7;
-                    break;
-                } else if (playerInput == 2) {
-                    System.out.println(gameText.get(currentStage).get(2));
-                    status= LOSE;
-                    break;
-                } else {
+                    if (playerInput == 1) {
+                        System.out.println(gameText.get(currentStage).get(1));
+                        status = LOSE;
+                        break;
+                    } else if (playerInput == 2) {
+                        System.out.println(gameText.get(currentStage).get(2));
+                        currentStage = 6;
+                        break;
+                    } else if (playerInput == 3) {
+                        GameScript.currentStage = currentStage;
+                        Menu.pauseMenu();
+                    } else {
+                        System.out.println(choice[currentStage]);
+                        System.out.println("Введите 1 или 2.");
+                        System.out.println("Введите 3, чтобы выйти в меню.");
+                    }
+                case 6:
                     System.out.println(choice[currentStage]);
                     System.out.println("Введите 1 или 2.");
-                }
-            case 7:
-                System.out.println(choice[currentStage]);
-                System.out.println("Введите 1 или 2.");
+                    System.out.println("Введите 3, чтобы выйти в меню.");
 
-                playerInput = scanner.nextInt();
+                    playerInput = scanner.nextInt();
 
-                if (playerInput == 1) {
-                    System.out.println(gameText.get(currentStage).get(1));
-                    status = LOSE;
-                    break;
-                } else if (playerInput == 2) {
-                    System.out.println(gameText.get(currentStage).get(2));
-                    currentStage = 8;
-                    break;
-                } else {
+                    if (playerInput == 1) {
+                        System.out.println(gameText.get(currentStage).get(1));
+                        currentStage = 7;
+                        break;
+                    } else if (playerInput == 2) {
+                        System.out.println(gameText.get(currentStage).get(2));
+                        status = LOSE;
+                        break;
+                    } else if (playerInput == 3) {
+                        GameScript.currentStage = currentStage;
+                        Menu.pauseMenu();
+                    } else {
+                        System.out.println(choice[currentStage]);
+                        System.out.println("Введите 1 или 2.");
+                        System.out.println("Введите 3, чтобы выйти в меню.");
+                    }
+                case 7:
                     System.out.println(choice[currentStage]);
                     System.out.println("Введите 1 или 2.");
-                }
-            case 8:
-                System.out.println(choice[currentStage]);
-                System.out.println("Введите 1 или 2.");
+                    System.out.println("Введите 3, чтобы выйти в меню.");
 
-                playerInput = scanner.nextInt();
+                    playerInput = scanner.nextInt();
 
-                if (playerInput == 1) {
-                    System.out.println(gameText.get(currentStage).get(1));
-                    status = WIN;
-                    break;
-                } else if (playerInput == 2) {
-                    System.out.println(gameText.get(currentStage).get(2));
-                    status = LOSE;
-                    break;
-                } else {
+                    if (playerInput == 1) {
+                        System.out.println(gameText.get(currentStage).get(1));
+                        status = LOSE;
+                        break;
+                    } else if (playerInput == 2) {
+                        System.out.println(gameText.get(currentStage).get(2));
+                        currentStage = 8;
+                        break;
+                    } else if (playerInput == 3) {
+                        GameScript.currentStage = currentStage;
+                        Menu.pauseMenu();
+                    } else {
+                        System.out.println(choice[currentStage]);
+                        System.out.println("Введите 1 или 2.");
+                        System.out.println("Введите 3, чтобы выйти в меню.");
+                    }
+                case 8:
                     System.out.println(choice[currentStage]);
                     System.out.println("Введите 1 или 2.");
-                }
+                    System.out.println("Введите 3, чтобы выйти в меню.");
+
+                    playerInput = scanner.nextInt();
+
+                    if (playerInput == 1) {
+                        System.out.println(gameText.get(currentStage).get(1));
+                        status = WIN;
+                        break;
+                    } else if (playerInput == 2) {
+                        System.out.println(gameText.get(currentStage).get(2));
+                        status = LOSE;
+                        break;
+                    } else if (playerInput == 3) {
+                        GameScript.currentStage = currentStage;
+                        Menu.pauseMenu();
+                    } else {
+                        System.out.println(choice[currentStage]);
+                        System.out.println("Введите 1 или 2.");
+                        System.out.println("Введите 3, чтобы выйти в меню.");
+                    }
+            }
         }
         System.out.println(status.getMessage());
+        Menu.startApp();
     }
+
+
+
+
+
+
 
     public static int getCurrentStage() {
         return currentStage;
@@ -259,6 +318,10 @@ public class GameScript {
 
     public static Status getStatus() {
         return status;
+    }
+
+    public static void setStatus(Status status) {
+        GameScript.status = status;
     }
 
     public static Scanner getScanner() {
