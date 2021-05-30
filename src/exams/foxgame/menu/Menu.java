@@ -1,8 +1,9 @@
 package exams.foxgame.menu;
 
+
+import exams.foxgame.Game;
 import exams.foxgame.GameScript;
 import exams.foxgame.utils.Status;
-
 import java.util.Scanner;
 
 import static exams.foxgame.utils.Status.*;
@@ -22,17 +23,17 @@ public class Menu {
 
     public static void startApp() {
 
-        GameScript.status = INPROGRESS;
+        GameScript.gameStatus = INPROGRESS;
 
-        while (GameScript.status.equals(INPROGRESS)) {
+        while (GameScript.gameStatus.equals(INPROGRESS)) {
 
             System.out.println("""
-                Добро пожаловать в увлекательное приключение!
-                Выберите один из пунктов:
-                        1: Начать игру
-                        2: Загрузить игру
-                        4: Выход
-                """);
+                    Добро пожаловать в увлекательное приключение!
+                    Выберите один из пунктов:
+                            1: Начать игру
+                            2: Загрузить игру
+                            4: Выход
+                    """);
 
             int menuPlayerInput = scanner.nextInt();
 
@@ -43,10 +44,11 @@ public class Menu {
                 case 2:
                     game.loadGame();
                     break;
-                case 4: GameScript.status = END;
-                    System.out.println(GameScript.status.getMessage());
+                case 4:
+                    GameScript.gameStatus = END;
+                    System.out.println(GameScript.gameStatus.getMessage());
                     System.exit(1);
-                break;
+                    break;
 
                 default:
                     System.out.println("Пункт меню не выбран!Пожалуйста,выберите команду: ");
@@ -61,16 +63,16 @@ public class Menu {
 
     public static void pauseMenu() {
 
-        while (GameScript.status.equals(INPROGRESS)) {
+        while (GameScript.gameStatus.equals(INPROGRESS)) {
 
             System.out.println("""
-                Добро пожаловать в увлекательное приключение!
-                Выберите один из пунктов:
-                        1: Продолжить игру
-                        2: Сохранить игру
-                        3: Загрузить игру
-                        4: Выход
-                """);
+                    Добро пожаловать в увлекательное приключение!
+                    Выберите один из пунктов:
+                            1: Продолжить игру
+                            2: Сохранить игру
+                            3: Загрузить игру
+                            4: Выход
+                    """);
 
             int menuPlayerInput = scanner.nextInt();
 
@@ -84,8 +86,9 @@ public class Menu {
                 case 3:
                     game.loadGame();
                     break;
-                case 4: GameScript.status = END;
-                    System.out.println(GameScript.status.getMessage());
+                case 4:
+                    GameScript.gameStatus = END;
+                    System.out.println(GameScript.gameStatus.getMessage());
                     System.exit(1);
                     break;
 
@@ -94,8 +97,5 @@ public class Menu {
             }
 
         }
-
     }
-
-
 }

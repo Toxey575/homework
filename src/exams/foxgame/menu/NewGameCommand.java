@@ -1,8 +1,8 @@
 package exams.foxgame.menu;
 
-import exams.foxgame.utils.Status;
+import exams.foxgame.Game;
 
-public class NewGameCommand implements Command{
+public class NewGameCommand implements Command {
     private Game game;
 
     public NewGameCommand(Game game) {

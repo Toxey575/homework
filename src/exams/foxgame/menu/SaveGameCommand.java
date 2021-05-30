@@ -1,6 +1,8 @@
 package exams.foxgame.menu;
 
-public class SaveGameCommand implements Command{
+import exams.foxgame.Game;
+
+public class SaveGameCommand implements Command {
     private Game game;
 
     public SaveGameCommand(Game game) {
@@ -9,6 +11,6 @@ public class SaveGameCommand implements Command{
 
     @Override
     public void execute() {
-        game.saveGame();
+        //game.saveGame();
     }
 }
